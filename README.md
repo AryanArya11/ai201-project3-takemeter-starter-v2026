@@ -39,60 +39,61 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
+TakeMeter is a text classifier that analyzes discussions from Hacker News, a community centered around technology, AI, and software engineering. I want to explore whether a fine-tuned language model can distinguish between different types of technical discussions, particularly explanations, predictions, and real-world experiences.
 
-TakeMeter is a text classifier that analyzes comments from Hacker News, a community centered around technology, AI, and software engineering. I want to explore how a model can distinguish between comments that provide actual evidence, express opinions, or ask questions.
+After exploring posts from the community, I noticed three main distinctions:
 
-After looking through several posts, I noticed three main distinctions:
+1. Some users explain technical concepts and how different systems or technologies work.
+2. Others make predictions about where technology is heading or how it might impact the future.
+3. Some users share their personal experiences building, testing, or working with different technologies.
 
-1. Some users support their arguments with references, sources, or specific examples.
-2. Others make claims or share their opinions without necessarily providing evidence.
-3. Some users are genuinely looking for answers, asking questions or seeking clarification from others.
-
-Through this project, I want to see how effectively a fine-tuned language model can recognize these differences and consistently classify posts based on how users contribute to discussions.
-
-
+Through this project, I want to see how effectively a model can recognize these differences and classify posts based on the type of technical insight being shared.
 
 ---
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### `technical_explanation`
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
-
-### `label_one`
-
-**Definition:**
+**Definition:** A comment that explains how or why a technology works using specific technical details, mechanisms, or supporting evidence.
 
 **Example 1:**
->
+> It is significantly faster than llama.cpp on some tasks like prefill (decode is memory bandwidth constrained so language hardly makes a difference).
 
 **Example 2:**
->
+> The hardware supports it, but then Nvidia disabled it if the driver detects cheaper cards. This bypasses the NVidia slowdown.
 
-### `label_two`
+### `prediction`
 
-**Definition:**
+**Definition:** A comment that makes predictions or assumptions about how technology might evolve, perform, or impact the future.
 
 **Example 1:**
->
+> Considering the sheer volume GitHub received lately I wouldn’t be surprised if GitLab would experience similar issues unless self hosted.
 
 **Example 2:**
->
+> Building a new pro-level app with its own UI paradigms and concepts is going to be the next frontier. Give it 6 to 12 months, I'd say.
 
-### The hardest boundary
+### `real_world_experience`
 
-**Which two labels:**
+**Definition:** A comment that shares firsthand experiences, implementation challenges, or practical lessons learned from working with technology.
+
+**Example 1:**
+> I wanted to spend the weekend by trying to create a shared endless canvas. I was sure it would be quite possible with today's best AI [...] Eventually it took me months to complete.
+
+**Example 2:**
+> I used to get the OS out of space warning a lot from macOS. I used to have a 128GB SSD, and Adobe would fill up the drive with cache in the Application Support folder frequently.
+
+### The Hardest Boundary
+
+**Which two labels:** `technical_explanation` and `real_world_experience`
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
 
+The hardest distinction is between technical explanations and real-world experiences, since users often explain how something works through their own experiences.
 
+If a comment primarily focuses on explaining the underlying technical mechanism or behavior of a system, I will classify it as `technical_explanation`. However, if the comment mainly describes something the user personally built, tested, encountered, or learned through experience, I will classify it as `real_world_experience`, even if technical details are included.
+
+For posts that contain multiple elements, I will prioritize the main purpose of the comment rather than individual keywords.
 
 ---
 
