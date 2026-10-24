@@ -42,6 +42,16 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter is a text classifier that analyzes comments from Hacker News, a community centered around technology, AI, and software engineering. I want to explore how a model can distinguish between comments that provide actual evidence, express opinions, or ask questions.
+
+After looking through several posts, I noticed three main distinctions:
+
+1. Some users support their arguments with references, sources, or specific examples.
+2. Others make claims or share their opinions without necessarily providing evidence.
+3. Some users are genuinely looking for answers, asking questions or seeking clarification from others.
+
+Through this project, I want to see how effectively a fine-tuned language model can recognize these differences and consistently classify posts based on how users contribute to discussions.
+
 
 
 ---
