@@ -99,91 +99,144 @@ For posts that contain multiple elements, I will prioritize the main purpose of 
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+I collected 499 public comments from Hacker News using the
+Algolia API, focusing on discussions surrounding AI, software
+engineering, GPUs, databases, and other technical topics.
 
-**Where the posts came from:**
+From these comments, I selected 200 examples and classified
+them into three categories:
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+| Label | Count | Percentage |
+|---|---:|---:|
+| technical_explanation | 84 | 42% |
+| prediction | 57 | 28.5% |
+| real_world_experience | 59 | 29.5% |
 
-**Counts per label:**
+I personally labeled the first 20 comments without any
+assistance. For the remaining 180, I used a rule-based script
+that suggested labels based on language patterns and keywords.
+I reviewed each comment, correcting suggestions when needed
+and skipping comments that didn't fit my categories.
 
-| Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+I think one of the biggest challenges was how much overlap
+there can be between technical explanations and real-world
+experiences. A lot of users explain how something works
+through their own experiences, which definitely makes
+classifying them more complicated.
+
+---
+
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
+> **The post:**
+> I'm going to predict right now, as I weep into my coffee, massive centralized AI traffic monitoring is the only way that we fix this. The attack surface is effectively infinite as you look across all of the home routers, Keurigs, iot's, and mobile devices - and security has historically ranged from reactive to uninterested by people, companies, and government.
+
+> **Could have been:** `prediction` or `technical_explanation`
+
+> **I chose, because:** I chose `prediction` because although the author discusses real technical concerns surrounding cybersecurity and IoT devices, the main argument focuses on what they believe will become necessary in the future. Personally, I think the technical details support their prediction rather than explain how a specific system works.
 
 **2.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
+> **The post:**
+> A substantial percentage of AI criticism can boil down to some form of gatekeeping. Maybe AI can't draw a true Scotsman but many will still enjoy the result.
+
+> **Could have been:** `prediction` or `real_world_experience`
+
+> **I chose, because:** I initially found this difficult because the author is making a general observation about people's attitudes toward AI, rather than a clear technical prediction. I kept it as `prediction` because the author suggests that people will continue enjoying AI-generated content regardless of criticism. However, I think this is definitely a weaker fit for my taxonomy since it is mainly an opinion.
 
 **3.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
+> **The post:**
+> fund OSS? very tough thing because of how software ecosystem has changed because of AI. It's said but we can't do anything but suffer since AI is causing future vulnerabilities which will cause deadlocks later.
+
+> **Could have been:** `prediction` or `technical_explanation`
+
+> **I chose, because:** I chose `prediction` because the author discusses how AI might affect open-source software and introduces concerns about future vulnerabilities. While the comment mentions technical issues, it doesn't really explain the underlying mechanisms. I think the main focus is predicting potential consequences rather than explaining how something works.
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Base model:** DistilBERT (pretrained text classification model)
 
-**Base model:**
-
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:**
+- Epochs: 3
+- Learning rate: 2e-5
+- Batch size: 16
+- Random seed: 42
+- Maximum sequence length: 128 tokens
+- Device: CPU (PyTorch 2.14.1+cpu)
 
 **Anything I changed from the defaults, and why:**
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+I kept the default training hyperparameters because I wanted to
+see how well the model would perform before making any adjustments.
+The main change I made was updating the label configuration to
+match my three categories: technical explanations, predictions,
+and real-world experiences.
 
+Personally, I think starting with the default settings gives
+me a better understanding of what the model initially struggles
+with before experimenting with different configurations.
 
+**Split sizes:**
+- Training: 140 posts (70%)
+- Validation: 30 posts (15%)
+- Testing: 30 posts (15%)
+
+**Test set distribution:**
+- `technical_explanation`: 13 posts
+- `prediction`: 8 posts
+- `real_world_experience`: 9 posts
+
+**Initial Training Results:**
+
+| Metric | Result |
+|---|---:|
+| Overall accuracy | 43.33% |
+| Macro F1 | 0.202 |
+| Technical explanation F1 | 0.605 |
+| Prediction F1 | 0.000 |
+| Real-world experience F1 | 0.000 |
+| High-confidence accuracy | 70% |
+
+One thing I found very interesting was that the model classified
+every single test post as a technical explanation. Even though
+my dataset was relatively balanced, the model still struggled
+a lot with distinguishing between the three categories.
+
+I think this is something worth investigating in the next unit,
+particularly whether the issue comes from overlapping technical
+language, the quality of my labels, or the model's training
+configuration.
 
 ---
 
 ## How I Used AI
 
-<!-- Two specific moments — what you asked, what came back, what you changed.
-
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
-
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- **What I asked for:** I used ChatGPT to help me explore different ways to classify discussions from Hacker News. Initially, I was considering more general labels like evidence, opinion, and questions, but I wanted something more specific to technology and software engineering.
+
+- **What came back:** ChatGPT helped think about characteristics for categorizing posts based on technical explanations, predictions, and real-world experiences. It also helped me think through the differences between these categories and situations where they might overlap.
+
+- **What I changed:** I refined the label names and definitions to make them easier to understand and more relevant to what I wanted to measure. Personally, I felt these categories would be a lot more interesting to explore because they focus on how people discuss technology rather than simply whether they agree or disagree.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- **What I asked for:** I asked ChatGPT to help me automate collecting real Hacker News comments and make the labeling process more efficient, since manually collecting and organizing 200 posts would take a lot of time.
+
+- **What came back:** ChatGPT helped me develop PowerShell scripts that collected 499 public comments using the Hacker News Algolia API. It also provided a separate script that suggested labels based on keywords and language patterns.
+
+- **What I changed:** I reviewed the collected comments and independently labeled my first 20 examples. For the remaining posts, I used the suggested labels as a starting point, correcting classifications when necessary and skipping posts that didn't fit my categories. I ended up with 200 labeled examples.
 
 **Pre-labelling disclosure:**
+
+I used a rule-based PowerShell script to generate preliminary labels for 180 of my 200 examples. The script looked for specific keywords and phrases associated with each category rather than using a trained AI model.
+
+I personally labeled the first 20 examples without assistance and reviewed the remaining 180 suggestions before including them in my dataset.
+
+I think this approach made the process a lot more efficient while still allowing me to make the final decisions about how each comment should be classified. I definitely noticed that keyword-based suggestions weren't always accurate, especially when posts discussed technical concepts through personal experiences.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
