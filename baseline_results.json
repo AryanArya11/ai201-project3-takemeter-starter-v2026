@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.36666666666666664,
+    "f1_macro": 0.3055555555555555,
+    "per_label": {
+      "prediction": {
+        "precision": 0.25,
+        "recall": 0.125,
+        "f1": 0.16666666666666666,
+        "support": 8
+      },
+      "real_world_experience": {
+        "precision": 0.34782608695652173,
+        "recall": 0.8888888888888888,
+        "f1": 0.5,
+        "support": 9
+      },
+      "technical_explanation": {
+        "precision": 0.6666666666666666,
+        "recall": 0.15384615384615385,
+        "f1": 0.25,
+        "support": 13
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "GitHub is such a mess. They seem to be doing everything and nothing. GitLab is 100x better, in terms of DX. While I still have a soft spot for GH, its frustrating to use it when GL exists.",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "Hey all! I built Enzyme to help agents and people compound knowledge, together. This week I decided to open-source several years of my work (it began as an Obsidian plugin, then became the first MCP for Obsidian). Enzyme is like an LSP for ideas; it orients agents by emulating your working memory from a local knowledge base (sqlite or .md). I decided that a language was the best way to represent several design elements of agent memory at once: append-only log locations, temporal distribution config, profiles for \"dreaming\", and more. Your agent can setup Enzyme, compile the Enzyme program, and maintain a local-first, self-updating lens over its wiki. It's very fast. I use it daily to maintain my 8000+ note Zettelkasten that also acts as a personal CRM (meeting transcriptions), Readwise collection, journal, and home for agent rollout summaries. Core to its design are questions that are generated from recent material and projected over the corpus. Instead of \"dreaming\" .md files over fragments, it generates questions to connect their ideas using embedding similarity (static embeddings developed by Flower Computer). What these questions notice is configurable. The binary, including the embedding weights baked in, sits under 30 mb.",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I've had the exact same experience. In the before-time I often reflected on how my love of sqlite was borderline irrational for what it is. Now, in a few projects I've let the LLM do postgres, and it's so nice having the pain if a db server mostly just handled. Still choose sqlite for anything embedded or without a hosted server.",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I recently came across https://www.kernel.org/pub/linux/kernel/people/paulmck/perfb... , it draws from author's experience about applying optimizations in linux codebase . I also like this very readable paper https://xnning.github.io/papers/perceus.pdf , about reducing the costs of reference counting in context of functional languages.",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "Article seems to answer the question: because generated text has the competing objective of information density and supporting reasoning chains. But I also wonder why AI loves to add slogans, catch phrases, and witty sentence fragments. It\u2019s grating and a dead giveaway of slop.",
+      "gold": "prediction",
+      "predicted": "technical_explanation"
+    },
+    {
+      "text": "> Why don't politicians care about this? Because it is not the subject that will win them the next election. And even if they care, some things are easier said than done. With politicians who care, you get things like GDPR, which goes in the right direction, but is a huge legal mess. And it is a mess because it can't be made simple. Obviously, you have to take consumer interests into account, but you also have to take companies interest into account too, both big and small, otherwise they will just stop doing business, which is bad for the economy and will mean that consumers won't find what they want at a reasonable price. You have to think about the loopholes big companies will invariably find, and covering them will add complexity, but still make it so that small companies can comply without a full time team of lawyers assisting them. For example, you say the consumer could return it for a full refund on a bad update, but to whom? Should the burden be put on the small retailer who sold it to you (and may be out of business)? There is already plenty of stuff the manufacturer must tell you, usually one a piece of paper no one reads, and the more you ask, the less people will read because there will be too much information. A \"privacy score\" may be a good idea, if well designed, it will share a place with the energy score, environment score, repairability score, safety signs, origin, etc... And how do you differentiate actual automated content recognition that consumers could want from spyware, formally, so that the first one is allowed but not the latter. All that to say that it is not impossible, but even with politicians caring, it is complicated. European politicians care (because it can win them votes), the results are so complicated they are getting ridiculed by the rest of the world.",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "> We could add these names to our global malicious domain blocking database, which is what we use to provide internet users with malware and phishing protection. This is a single, monolithic set of names applied to all users of our protective services (9.9.9.9 & secondaries) globally but not to our nonprotective services (9.9.9.10 & secondaries) I see how that could work against a service claiming to give users the DNS lookups they expect",
+      "gold": "technical_explanation",
+      "predicted": "technical_explanation"
+    },
+    {
+      "text": "> Great, another project with an asinine and backwards-thinking AI policy Nothing asinine about it. Just because many in the industry have decided they are willing to accept the downsides of using output generated by LLMs in their product doesn't mean that everyone in the industry has to. People are still free to do things differently than you do.",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I always found it wierd that people flocked to github. The app sucks, if I have to use it for work it infuriates me at nearly every turn with its sad excuse for UI. People like free sh*. As for gitlab...yuck. But whatever. Most of the dev tool space is really just \"sh* we have to put up with now\", none of it is any good, all of it is dated from the early aughts, and taken as a whole is even worse because none of it works together. While software development itself got better in the last ten years these tools stayed the same or got worse (enshittification). And this is part of why folks are self hosting. The other part is that AI is destroying the Internet and its time to pack your bags anyway. The smart people already have.",
+      "gold": "prediction",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "(Forgive the stupid AI answer, but does this help?): 2. Submitting an App Without a GitLab Account To get an app listed on F-Droid, a metadata file must be added to the official fdroiddata repository. While the standard workflow involves opening a Merge Request on GitLab, you still do not strictly need a GitLab account: \u2022 Alternative Logins: The F-Droid GitLab instance allows you to sign in using your existing GitHub, Google, Bitbucket, or Salesforce accounts. \u2022 Community Submission: If you do not want to interact with GitLab at all, you can post a request on the F-Droid Forum, and community contributors can create and submit the metadata file on your behalf. ----- Apparently you don't need to actually create a gitlab account? Login with your github or whatever (I assume via oauth?) The docs definitely don't look clear (on quick perusal), and maybe this info is outdated, but perhaps you can still push to gitlab without actually creating an account just need to make sure the metadata is correct?",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "Because a local software vuln is much less scary, less exploitable, and more common than an exploit like PHP2Shell, which requires basically no effort to exploit a large chunk of publicly exposed webservers. Basically, local vulns have been a thing forever and GP is off topic.",
+      "gold": "technical_explanation",
+      "predicted": "technical_explanation"
+    },
+    {
+      "text": "Europe threatening the US with a good time? Imagine a world where all of our best companies didn't have to contort themselves to adhere to the random patchwork of regulations the EU throws at it to justify endless rent extraction through fines? Oh no! They might have to innovate for themselves using checks notes US AI software to reverse engineer US SaaS? What a joke of an article.",
+      "gold": "prediction",
+      "predicted": "prediction"
+    },
+    {
+      "text": "According to the article the Agency for Digital Government (Digitaliseringsstyrelsen) initiated a pilot in spring 2025 to use Collabora[1]. A General Election was called (not related) which put the project on hold indefinitely. No plan to pick it up agian, and no evaluation is planned. The article mentions that the (38) test persons had reported some frustrations with typography, and track-changes during the test. 1: https://www.collaboraonline.com/",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "> disguised as an open source project A software project either is or isn't open source. Gitlab CE is source-available (here: https://gitlab.com/gitlab-org/gitlab ) with an MIT license, which is a permissive open-source license. Gitlab CE is open-source. There exist versions of Gitlab with features that require payment. This does not mean that Gitlab (the product) is not open-source; it means that Gitlab (the company) has a core product which is open-source, and then sustains its development through the sale of licenses to product tiers beyond that.",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "For custom server implementations, agreed. But the web still depends on HTTP and we sadly need the major infra providers to agree on a new standard otherwise HTTP isn't going anywhere",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "> Roc is not a mature language (it's still weeks away from its first numbered release, 0.1.0) It then links to a video where a consultant mentions using in production (for several years already?), which confused me. How can you justify using immature technologies for client work? Or is it an extra benefit when it breaks and you have to fix it? I'm genuinely curious, maybe it's not as bad as I think. But I've used immature hosting platforms, and that certainly didn't go well for me!",
+      "gold": "real_world_experience",
+      "predicted": "prediction"
+    },
+    {
+      "text": "exactly. somehow many people have the idea that C-like imperative code harbours bugs because it cannot be formally reasoned about, and the answer is writing code that can be formally reasoned about. That the resulting code is many orders of magnitude larger and more complicated than the \"informal\" original, and often simply cannot exist, and is incomprehensible to most humans if it does, is left as an exercise for the reader. I mean, formal methods cannot even prove collatz conjecture terminates. Somehow that thing seems to be running some sort of almost turing complete machine in the number encoding. Good luck formalizing existing software!",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I find it kind of funny they replace these defective units with another defective unit, but I guess that\u2019s all Apple can do, for now. Has anyone caught wind of any hardware revisions?",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I hope for more indie, in games and software - more lifestyle & small businesses - where creativity and uniqueness can flourish",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I think so, especially vibe coded software. I think hackers have the advantage now and defenders need to limit attack surface more rigorously. Unfortunately that means understanding and limiting dependencies of developers... Yea, good luck. My popcorn is ready. My servers are not.",
+      "gold": "prediction",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "Nobody is going to build any software in US when nearshore is 2-3 times cheaper. American engineers are overpriced and not competitive on the global market.",
+      "gold": "prediction",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "If you had been asked, in 2016, to describe the behavior of a \"probabilistic database\", I very much doubt you'd have described the behavior of 2026 LLMs. They are deeply surprising in many ways.",
+      "gold": "technical_explanation",
+      "predicted": "prediction"
+    },
+    {
+      "text": "It's not just index pages. Generally databases write records into pages, which are then grouped into extents. If the primary key gives an ordering you can create new pages and start filling them up in an orderly fashion. If it's random, you are doing random inserts into pages everywhere all the time, then you start running out of room in pages and have to start splitting them. UUIDv7 solves the most painful parts of this problem in general and is a much better option for a Primary Key than UUIDv1-4.",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I would be shocked if there\u2019s an agreed upon list, certainly not one supported by neuro recordings. You\u2019re probably well-served by coming up with a good set by your own informal observation.",
+      "gold": "prediction",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "I've used FreeDNS on occasion for test domain names, one-off experiments, and similar. I'm very appreciative this exists, but there are some pain points that similar services handle better. The domains are missing from the public suffix list. This impacts how cookies are handled by the domain names, with concerns the browser will allow software to set the cookie on the shared domain name instead of the subdomain. This can be a security problem. Getting added to the PSL may not happen: https://github.com/publicsuffix/list/pull/79 It can be difficult to get a free HTTPS certificate for your subdomain. Let's Encrypt applies per-domain name rate limits and these domain names see lots of issuance requests. There's a process to lift those limits, but last I checked FreeDNS didn't use it. You can still, of course, pay for a certificate. There's tons of abuse on free domains so you may find that your domain is blocked on various lists. Here are some compelling alternatives I use now, which manage these issues better: - https://messwithdns.net/ - Exceptionally well-made DNS console for learning DNS - https://open-domains.com/ - Uses Cloudflare, great Discord group - Even more: https://free.hrsn.dev/#/?id=domains",
+      "gold": "prediction",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "Github desktop is such a hot mess that I instead choose to continue to suffer with SourceTree. Sourcetree annoys me for reasons I still cannot articulate after a decade, but it at least tends to actually work without being too intrusive as far as updating, doesn't randomly derp out on credentials, and is super handy when trying to visualize janky branch patterns of dev teams.",
+      "gold": "real_world_experience",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "Because just about everything is AI. AI in itself is a rather useless term, and that was years ago. The differences are not really that great most of the time. Quite often one type of logic in one type of ML network can be easily simulated in something like a generic transformer network and vice versa. Efficiency is typically the biggest constraint.",
+      "gold": "technical_explanation",
+      "predicted": "prediction"
+    },
+    {
+      "text": "> It is estimated that each inspection will take six work hours and cost $510 per aircraft, putting the cost across the US fleet at over $1 million, not including the price of replacement parts. trivial, to ensure that hundreds of people don\u2019t die, so of course several airlines pushed back on the requirement.",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": "GrapheneOS and AOSP are Linux distributions. Linux is not glibc, systemd, GNU coreutils, GCC and GNOME. Linux doesn't have a specific libc, init system, command-line utilities, compiler toolchain, graphical environment or other userspace components. There are many Linux distributions beyond Android not using those components. There's no standard Linux userspace and a distribution using OpenRC, musl, Clang/LLVM, uutils coreutils and other software isn't somehow not Linux. Linux distribution doesn't mean systemd/GNU/Linux. GrapheneOS and AOSP do use the userspace components developed with the Linux kernel such as iproute2. GNU components aren't part of Linux or the broader Linux project. Those don't even use a compatible license. It isn't legal to use the Linux kernel source code as a reference for writing glibc code since GPLv2-only does not permit the additional restrictions of GPLv3.",
+      "gold": "technical_explanation",
+      "predicted": "real_world_experience"
+    },
+    {
+      "text": ">I'm going to monitor it to see how it does in the coming months Will be very interesting to see how this pans out. Would be interested to see how many servers it ran on, how many applied which fixes, how many broke something, how long each took to fix/break and on average, success rates of different models... It does, technically, add another attack surface because \"Posts, advisories, repository content and command output can contain hostile instructions...\" Interesting to see if it's any better at understanding and applying \"hey guy's it's fixed all you have to do is\" posts. And what if the official sources are genuinely reccomending disconnecting until a patch is posted? Would it choose to 'sleep 60', check for fix, repeat? It would be directly susceptible to supply chain attacks, no? Like, if someone cracked a distros website, socials, git, etc and posted a \"download critical fix\", would it wait to see if say maintainers are commenting on it in other channels? I could see this method being potentially useful serving a client running on the server it's monitoring with backups and extensive relevant tests. It could apply fix, get server response, continue or apply fix, no response, roll to last good in a way that it can't do if it's running on the machine it borked. (though, aren't there ways to do that at the kernel level where it rolls back if it fails to boot? not familiar)",
+      "gold": "prediction",
+      "predicted": "real_world_experience"
+    }
+  ]
+}

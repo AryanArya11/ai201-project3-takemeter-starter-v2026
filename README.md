@@ -260,12 +260,25 @@ I think this approach made the process a lot more efficient while still allowing
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+Before running the baseline, I think the general model
+might outperform my fine-tuned model because my original
+model classified every test post as a technical explanation.
+
+Personally, I feel that providing the model with clear label
+definitions could help it distinguish predictions and
+real-world experiences more effectively.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
 
+I found it very interesting that my fine-tuned model achieved a higher overall accuracy of 43.3% compared to the baseline's 36.7%, but actually performed worse across the labels overall.
 
+The baseline achieved a higher macro F1 score, meaning it was more effective at recognizing the different categories rather than focusing on just one. My fine-tuned model performed better on technical explanations, but failed to correctly classify any predictions or real-world experiences.
+
+I think this demonstrates that fine-tuning doesn't necessarily guarantee better performance. In my case, the model seems to have learned to favor technical explanations, even though my dataset was relatively balanced.
+
+Personally, I want to explore whether this behavior comes from overlapping language between my categories, the limited amount of training data, or the training settings themselves.
 
 ---
 
@@ -274,13 +287,14 @@ I think this approach made the process a lot more efficient while still allowing
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
 
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| Measure | Baseline | Trained | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.367 | 0.433 | +0.067 |
+| Macro F1 | 0.306 | 0.202 | -0.104 |
+| F1 — `prediction` | 0.167 | 0.000 | -0.167 |
+| F1 — `real_world_experience` | 0.500 | 0.000 | -0.500 |
+| F1 — `technical_explanation` | 0.250 | 0.605 | +0.355 |
+
 
 ### Confusion matrix
 
