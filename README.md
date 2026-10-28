@@ -284,35 +284,69 @@ Personally, I want to explore whether this behavior comes from overlapping langu
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | >= 70% | 43.3% | 43.3% | 43.3% | MISSED |
+| 2. Minimum F1 for every label | >= 0.60 | 0.000 | 0.000 | 0.000 | MISSED |
+| 3. Maximum dataset label share | <= 60% | 42% | 42% | 42% | MET |
+| 4. Human label agreement | >= 80% | N/A | N/A | N/A | Pending staff comparison |
+| 5. High-confidence accuracy | >= 80% | | | | Pending confidence results |
 
-| Measure | Baseline | Trained | Difference |
+
+### Performance Across Three Seeds
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.433 | 0.433 | 0.433 | 0.000 |
+| Macro F1 | 0.202 | 0.202 | 0.202 | 0.000 |
+| F1 — `technical_explanation` | 0.605 | 0.605 | 0.605 | 0.000 |
+| F1 — `prediction` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `real_world_experience` | 0.000 | 0.000 | 0.000 | 0.000 |
+
+**What I noticed:**
+
+I found it very interesting that all three training runs produced
+exactly the same results, even though I changed the random seed
+each time.
+
+Personally, I think this suggests that the model is consistently
+struggling to distinguish between my categories rather than
+simply performing poorly because of one unlucky data split.
+
+Although the accuracy was stable at 43.3%, the model achieved
+an F1 score of 0 for predictions and real-world experiences
+across all three seeds. I definitely think this points toward
+a more fundamental issue with how the model learned the
+differences between these labels.
+
+
+
+### Confusion Matrix
+
+| true \ predicted | technical_explanation | prediction | real_world_experience |
 |---|---|---|---|
-| Overall accuracy | 0.367 | 0.433 | +0.067 |
-| Macro F1 | 0.306 | 0.202 | -0.104 |
-| F1 — `prediction` | 0.167 | 0.000 | -0.167 |
-| F1 — `real_world_experience` | 0.500 | 0.000 | -0.500 |
-| F1 — `technical_explanation` | 0.250 | 0.605 | +0.355 |
+| **technical_explanation** | 13 | 0 | 0 |
+| **prediction** | 8 | 0 | 0 |
+| **real_world_experience** | 9 | 0 | 0 |
 
-
-### Confusion matrix
-
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
-
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
 
+The biggest confusion was between real-world experiences and
+technical explanations. The model incorrectly classified all
+9 real-world experience posts as technical explanations,
+while none of the technical explanations were classified
+as real-world experiences.
 
+I think this shows that the model learned to heavily favor
+technical explanations rather than recognizing the differences
+between my categories. Personally, I feel that the overlapping
+technical language might be contributing to this, but I
+would need to investigate my labeling consistency further
+to understand why this happened.
 
 ---
 
