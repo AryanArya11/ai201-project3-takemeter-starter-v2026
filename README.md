@@ -573,31 +573,26 @@ technical explanation across all three seeds. I wanted
 to test whether additional training would help the model
 learn the differences between categories.
 
-### Run Log — After
-
-<!-- Add the actual results when training finishes. -->
-
-**Did it help, and how do I know:**
-
-The improvement is being evaluated using the same three
-random seeds. I will compare the accuracy, per-label F1,
-and high-confidence accuracy against the original runs.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | >= 70% | 60.0% | 43.3% | 53.3% | MISSED |
+| 2. Minimum F1 for every label | >= 0.60 | 0.200 | 0.000 | 0.364 | MISSED |
+| 3. Maximum dataset label share | <= 60% | 42% | 42% | 42% | MET |
+| 4. Human label agreement | >= 80% | 66.7% | N/A | N/A | MISSED |
+| 5. High-confidence accuracy | >= 80% | 70% | 70% | 50% | MISSED |
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+I think increasing the number of epochs from 3 to 5 definitely helped improve the model's performance overall. My average accuracy increased from 43.3% to 52.2%, while the macro F1 improved from 0.202 to 0.415.
 
+What I found particularly interesting was that the model finally started recognizing predictions and real-world experiences rather than classifying every post as a technical explanation. Before the improvement, both categories had an F1 score of 0.000 across all three seeds. After increasing the epochs, predictions reached an F1 of 0.625 in seed 42, while real-world experiences reached 0.364 in seed 2024.
+
+However, I also noticed that the model became a lot less consistent across different seeds. Accuracy ranged from 43.3% to 60.0%, a difference of 16.7 percentage points.
+
+Personally, I feel that giving the model more training helped it learn the differences between my labels, but it also showed how much the results can change depending on the random seed. Although I still missed my original accuracy and per-label F1 targets, the improvement was measurable.
 
 
 ---
