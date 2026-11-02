@@ -284,13 +284,17 @@ Personally, I want to explore whether this behavior comes from overlapping langu
 
 ## Run Log — Before
 
+
+## Run Log — Before
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
 | 1. Overall accuracy | >= 70% | 43.3% | 43.3% | 43.3% | MISSED |
 | 2. Minimum F1 for every label | >= 0.60 | 0.000 | 0.000 | 0.000 | MISSED |
 | 3. Maximum dataset label share | <= 60% | 42% | 42% | 42% | MET |
-| 4. Human label agreement | >= 80% | N/A | N/A | N/A | Pending staff comparison |
-| 5. High-confidence accuracy | >= 80% | | | | Pending confidence results |
+| 4. Human label agreement | >= 80% | 66.7% | N/A | N/A | MISSED |
+| 5. High-confidence accuracy | >= 80% | 70% | 80% | 50% | MISSED |
+
 
 
 ### Performance Across Three Seeds
@@ -352,28 +356,83 @@ to understand why this happened.
 
 ## Verdicts and Diagnoses
 
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
-
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | >= 70% | MISSED | All three seeds achieved 43.3% accuracy, which was below my target. |
+| 2 | Minimum F1 for every label | >= 0.60 | MISSED | Both `prediction` and `real_world_experience` achieved an F1 of 0.000 across all three seeds. |
+| 3 | Maximum dataset label share | <= 60% | MET | My largest category was `technical_explanation` at 84 out of 200 posts, or 42%. |
+| 4 | Human label agreement | >= 80% | MISSED | I agreed with the staff on 20 out of 30 posts, giving me 66.7% agreement. |
+| 5 | High-confidence accuracy | >= 80% | MISSED | The most-confident third achieved 70%, 80%, and 50% accuracy across the three seeds. Only seed 7 met my target. |
 
-**Diagnoses**
+### Diagnoses
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+**1. Overall Accuracy**
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+I think the biggest issue with my model was that it learned to predict
+`technical_explanation` for every single test example. Even though my
+dataset was relatively balanced, the model didn't learn to distinguish
+between the other two categories.
 
+All three seeds achieved the same 43.3% accuracy, which makes me feel
+that the issue wasn't just one unlucky split. I think the model may
+need stronger training signals to recognize the differences between
+my categories.
+
+**2. Per-Label Performance**
+
+Personally, I found this result very interesting because
+`technical_explanation` achieved an F1 of 0.605, while both
+`prediction` and `real_world_experience` achieved 0.000.
+
+The confusion matrix showed that all 8 prediction posts and all 9
+real-world experience posts were classified as technical explanations.
+
+I think the model struggled a lot with distinguishing technical
+terminology from the actual purpose of a comment.
+
+**3. Dataset Balance**
+
+This criterion was met because my largest category represented only
+42% of the dataset.
+
+I think this is important because it shows that the model's behavior
+cannot simply be explained by an extremely unbalanced dataset.
+However, having a relatively balanced dataset clearly wasn't enough
+to guarantee balanced predictions.
+
+**4. Human Label Agreement**
+
+I missed my 80% agreement target, achieving 66.7% instead.
+
+One thing I noticed was that I classified 8 of the 10 disagreements
+as reactions, while the staff classified those posts as either
+analysis or hot takes.
+
+I think I relied too heavily on whether a post sounded personal
+rather than checking whether it contained evidence or made a
+general claim.
+
+Although the staff exercise used a different taxonomy from my
+Hacker News dataset, it suggests that I may have applied some
+of my own label boundaries inconsistently as well.
+
+
+**5. Prediction Confidence**
+
+I missed my 80% confidence accuracy target in two out of
+three training runs. Seed 42 achieved 70%, seed 7 achieved
+80%, and seed 2024 only achieved 50%.
+
+Personally, I think this is interesting because overall
+accuracy stayed exactly the same across all three seeds,
+but the model's high-confidence predictions varied a lot.
+
+The spread was 30 percentage points, which makes me feel
+that the model's confidence isn't very reliable yet.
+
+I think this could be related to the model consistently
+favoring technical explanations without properly learning
+the differences between all three categories.
 
 
 ---
