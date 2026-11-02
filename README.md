@@ -378,57 +378,126 @@ to understand why this happened.
 
 ---
 
+
 ## Agreement Report
 
-<!-- Your rate against the staff set, and every disagreement adjudicated.
+**Agreement rate:** 20 / 30 = 66.7%
 
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
+After comparing my labels with the staff's labels, I agreed on 20 out
+of 30 posts. Personally, I think the biggest issue was how I
+interpreted the `reaction` category. I initially classified a lot
+of personal experiences as reactions, even when those experiences
+included specific evidence supporting an argument.
 
-**Agreement rate:** ___ / 30 = ___%
+### Disagreements
 
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+**1. Sleep and training performance (sp_002)**
 
-**Disagreements**
+> I tracked sleep against session quality for eleven weeks. Under seven hours the next day's intervals were 6-8 seconds per mile slower, every time bar one. Small sample, one runner, but it's consistent enough that I've stopped scheduling hard days after late shifts.
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
+- **Staff said:** `analysis`
+- **I said:** `reaction`
+- **My call:** I think the staff's classification is more accurate because the author uses eleven weeks of observations and specific performance numbers to support their conclusion. I focused too much on the personal experience.
+- **Pile:** A — I applied the rule too loosely.
 
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
+**2. Club championship scoring (sp_003)**
 
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
+> The club championship scoring changed in 2019 from top-6 to top-10. Since then our B team has finished above the A team twice. That's not depth improving, it's the scoring rewarding turnout.
 
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+- **Staff said:** `analysis`
+- **I said:** `hot_take`
+- **My call:** I agree with the staff because the author identifies a specific rule change and its consequences. The facts are being used to support the argument rather than simply expressing an opinion.
+- **Pile:** A — I overlooked the supporting evidence.
 
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+**3. The hill at mile 18 (sp_004)**
 
-**What the pattern in my disagreements tells me:**
+> Everyone blames the hill at 18 miles. I split the field into people who ran the first half under 1:45 and over, and the slowdown after 18 was almost identical for both groups. If the hill were the problem the fast starters would fall apart harder.
 
+- **Staff said:** `analysis`
+- **I said:** `reaction`
+- **My call:** I think `analysis` makes more sense because the author separates runners into two groups and uses their results to challenge an explanation. This is definitely an argument supported by evidence.
+- **Pile:** A — The rule already covered this.
 
+**4. Carbon plates and mileage (sp_005)**
+
+> Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week.
+
+- **Staff said:** `analysis`
+- **I said:** `reaction`
+- **My call:** Personally, I can see why this is difficult because the author discusses their own running experience. However, the two percentage changes are being compared to support the argument about training mileage. I think `analysis` is ultimately the stronger choice.
+- **Pile:** C — Both interpretations initially seemed defensible, but the evidence favors analysis.
+
+**5. First-time race participants (sp_006)**
+
+> Checked the entry lists. 41% of this year's field have never run the distance before, against 26% five years ago. That's why the finish-line photos look different, not because standards dropped.
+
+- **Staff said:** `analysis`
+- **I said:** `hot_take`
+- **My call:** I think the staff is right that the statistics support the argument about participation changing over time. Although the explanation about finish-line photos is an inference, the author uses the percentages to justify that interpretation.
+- **Pile:** C — The connection between the numbers and the conclusion still requires interpretation.
+
+**6. Running in different temperatures (sp_007)**
+
+> Ran the same loop in 4C and in 24C within a fortnight, same effort by heart rate. 90 seconds slower in the heat over six miles. People keep saying heat costs you 'a bit' and it's more than that.
+
+- **Staff said:** `analysis`
+- **I said:** `reaction`
+- **My call:** I originally focused on the author's personal experience, but I think this is better classified as analysis. The author compares two temperatures while controlling for effort and uses the result to support their conclusion.
+- **Pile:** A — I applied the reaction definition too broadly.
+
+**7. Comparing running shoes (sp_010)**
+
+> Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people.
+
+- **Staff said:** `analysis`
+- **I said:** `reaction`
+- **My call:** I think this is one of the harder examples because it describes an experience involving only three runners. However, the comparison is still used to make a specific argument about shoe performance. I would lean toward the staff's `analysis` label.
+- **Pile:** C — The personal observation and analytical conclusion overlap.
+
+**8. Track sessions and running pace (sp_018)**
+
+> Track sessions are wasted on anyone running slower than 8 minute miles. You'd get more out of just running more.
+
+- **Staff said:** `hot_take`
+- **I said:** `reaction`
+- **My call:** I agree with the staff because the author is making a general claim about runners without providing supporting evidence. It doesn't describe something that just happened to the writer.
+- **Pile:** A — I confused a strong opinion with a reaction.
+
+**9. Enjoying long runs (sp_019)**
+
+> Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so.
+
+- **Staff said:** `hot_take`
+- **I said:** `reaction`
+- **My call:** I initially interpreted this as a personal reflection about running. However, the author is making a general statement about everyone, rather than describing their own immediate experience. I think `hot_take` is more accurate.
+- **Pile:** A — The decision rule already explains this boundary.
+
+**10. Injury discussion threads (sp_020)**
+
+> Every injury thread on this forum is the same injury and the same three replies.
+
+- **Staff said:** `hot_take`
+- **I said:** `reaction`
+- **My call:** I think this is somewhat ambiguous because the claim could theoretically be checked against previous discussions. However, the author doesn't actually provide examples or evidence. Since it's a general statement rather than an immediate personal response, I think `hot_take` fits better.
+- **Pile:** C — The statement sounds observational, but doesn't provide checkable supporting evidence.
+
+### What the pattern in my disagreements tells me
+
+The biggest pattern I noticed was that I classified eight of my ten
+disagreements as `reaction`, while staff classified those same posts
+as either `analysis` or `hot_take`.
+
+I think this shows that I relied too heavily on whether a comment
+sounded personal or emotional rather than looking at the actual
+argument being made.
+
+Personally, I feel that my biggest improvement would be applying
+the decision rules more consistently, especially the distinction
+between personal experiences and arguments supported by evidence.
+
+This also makes me question whether similar inconsistencies could
+exist in my original 200 Hacker News labels, particularly between
+`technical_explanation` and `real_world_experience`.
 
 ---
 
