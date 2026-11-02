@@ -560,11 +560,28 @@ exist in my original 200 Hacker News labels, particularly between
 
 ---
 
-## The Improvement
-
 **What I changed:**
 
+I increased the training epochs from 3 to 5 while keeping
+the dataset, labels, learning rate, batch size, and random
+seeds unchanged.
+
 **Which diagnosis pointed at it:**
+
+My original model classified every test example as a
+technical explanation across all three seeds. I wanted
+to test whether additional training would help the model
+learn the differences between categories.
+
+### Run Log — After
+
+<!-- Add the actual results when training finishes. -->
+
+**Did it help, and how do I know:**
+
+The improvement is being evaluated using the same three
+random seeds. I will compare the accuracy, per-label F1,
+and high-confidence accuracy against the original runs.
 
 ### Run Log — After
 
@@ -587,15 +604,28 @@ exist in my original 200 Hacker News labels, particularly between
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
+My biggest issue is that TakeMeter consistently favors
+technical explanations over predictions and real-world
+experiences. Across my original three training runs, the
+model achieved 43.3% accuracy and completely failed to
+recognize two of my three categories.
 
+I also missed my human agreement target, achieving 66.7%.
+Personally, I think my labeling process could be improved
+by applying the decision rules more consistently.
 
+If I had more time, I would review the boundaries between
+my categories, collect additional examples, and experiment
+with different training configurations.
 
-**The gap between what I meant my labels to capture and what the model
-learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
+**The gap between what I meant my labels to capture and what the model learned:**
 
-
+I wanted TakeMeter to distinguish between different types
+of technical discussions, but my confusion matrix showed
+that the model learned to predict technical explanations
+almost exclusively. I think this demonstrates how a model
+can appear consistent without actually learning the
+distinctions I originally intended.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
